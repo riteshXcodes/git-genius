@@ -137,5 +137,51 @@ export const projectRouter = createTRPCRouter({
         projectId: z.string()
     })).query(async ({ ctx, input }) => {
         return await ctx.db.userToProject.findMany({ where: { projectId: input.projectId }, include: { user: true } })
+    }), getMyCredits: protectedProcedure.query(async ({ ctx }) => {
+        return await ctx.db.user.findUnique({
+            where: {
+                id: ctx.user.userId!,
+            },
+            select: {
+                credits: true
+            }
+        });
+    }),
+    checkCredits: protectedProcedure.input(z.object({
+        githubUrl: z.string(),
+        githubToken: z.string().optional(),
+    }))
+        .mutation(async ({ ctx, input }) => {
+            const token = input.githubToken || process.env.GITHUB_TOKEN;
+            if (!token) throw new Error("No github token provided or configured.")
+            let fileCount = 0;
+            try {
+                fileCount = await checkCredits(input.githubUrl, token);
+            } catch (err: any) {
+                console.error("Error fetching repo files:", err?.response?.data || err);
+
+                // Handle GitHub API errors gracefully
+                if (err?.response?.status === 401) {
+                    throw new Error("Invalid GitHub token (401 Bad credentials).");
+                }
+                if (err?.response?.status === 403) {
+                    throw new Error("GitHub API rate limit exceeded. Please try again later.");
+                }
+                throw new Error("Unable to fetch repository files.");
+            }
+            const userCredit = await ctx.db.user.findUnique({
+                where: { id: ctx.user.userId! },
+                select: { credits: true }
+            })
+            return {
+                fileCount,
+                credits: userCredit?.credits || 0
+            }
+        }),
+    getPurchaseHistory: protectedProcedure.query(async ({ ctx }) => {
+        return await ctx.db.stripeTransaction.findMany({
+            where: { userId: ctx.user.userId! },
+            orderBy: { createdAt: 'desc' },
+        });
     }),
 })
