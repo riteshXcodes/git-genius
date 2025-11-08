@@ -1,8 +1,10 @@
 import { Document } from "@langchain/core/documents";
 import { GoogleGenAI } from "@google/genai";
+import { OpenRouter } from "@openrouter/sdk";
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1";
-
+const openRouter = new OpenRouter({
+    apiKey: OPENROUTER_API_KEY,
+});
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY,
 });
@@ -34,35 +36,23 @@ const basePrompt = "You are an expert software engineer and technical documentat
 export const aiSummariseCommit = async (diff: string) => {
     const fullPrompt = `${basePrompt}\n\nNow, here is the diff:\n\n${diff}`;
 
-    const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            model: "google/gemini-flash-1.5", // or "google/gemini-2.0-flash-exp" if available
-            messages: [
-                {
-                    role: "system",
-                    content: "You are an expert developer assistant. Write a well-structured summary of this git diff using markdown."
-                },
-                {
-                    role: "user",
-                    content: fullPrompt
-                }
-            ],
-            temperature: 0.2,
-        }),
+    const res = await openRouter.chat.send({
+        model: 'openai/gpt-4o',
+        messages: [
+            {
+                role: 'system',
+                content: "You are an expert developer assistant. Write a well-structured summary of this git diff using markdown.",
+            },
+            {
+                role: 'user',
+                content: fullPrompt,
+            },
+        ],
+        stream: false,
     });
 
-    if (!response.ok) {
-        throw new Error(`OpenRouter API error: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    const output = data.choices?.[0]?.message?.content || "No summary generated.";
-    return output;
+    if (!res) return;
+    return res.choices[0]?.message.content;
 };
 
 export async function summariseCode(doc: Document) {
@@ -86,34 +76,22 @@ ${code}
     `;
 
     try {
-        const response = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                model: "google/gemini-flash-1.5-8b", // Faster model for code summaries
-                messages: [
-                    {
-                        role: "system",
-                        content: systemInstruction
-                    },
-                    {
-                        role: "user",
-                        content: userQuery
-                    }
-                ],
-            }),
+        const res = await openRouter.chat.send({
+            model: 'openai/gpt-4o',
+            messages: [
+                {
+                    role: 'system',
+                    content: systemInstruction,
+                },
+                {
+                    role: 'user',
+                    content: userQuery,
+                },
+            ],
+            stream: false,
         });
 
-        if (!response.ok) {
-            throw new Error(`OpenRouter API error: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        const summary = data.choices?.[0]?.message?.content;
-
+        const summary = res.choices[0]?.message.content?.toString();
         if (!summary) throw new Error("Cannot generate Code summary");
         return summary;
     } catch (error) {

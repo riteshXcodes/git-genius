@@ -18,7 +18,7 @@ import {
   MessageSquare,
   Zap
 } from "lucide-react";
-import {Navbar} from "@/components/navbar";
+import { Navbar } from "@/components/navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -78,7 +78,7 @@ export default function Home() {
                 {isSignedIn ? "Dashboard" : "Get Started"}<ChevronRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="text-base px-8 py-6" >
-                <Link href="https://github.com/rajaXcodes/GitGenius" className="flex items-center gap-2">
+                <Link href="https://github.com/rajaXcodes/git-genius" className="flex items-center gap-2">
                   <Github className="size-4" />
                   <span>View on Github</span>
                 </Link>
