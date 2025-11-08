@@ -4,7 +4,6 @@
     "": {
       "name": "gitgen",
       "dependencies": {
-        "gitgen": ".",
         "@ai-sdk/google": "^2.0.23",
         "@ai-sdk/rsc": "^1.0.79",
         "@anthropic-ai/sdk": "^0.68.0",
@@ -65,6 +64,7 @@
         "embla-carousel-react": "^8.6.0",
         "firebase": "^12.4.0",
         "fs": "^0.0.1-security",
+        "gitgen": ".",
         "ignore": "^7.0.5",
         "input-otp": "^1.4.2",
         "lucide-react": "^0.553.0",
@@ -90,7 +90,7 @@
         "tailwind-merge": "^3.3.1",
         "usehooks-ts": "^3.1.1",
         "vaul": "^1.1.2",
-        "zod": "^4.1.12",
+        "zod": "^3.23.8",
       },
       "devDependencies": {
         "@eslint/eslintrc": "^3.3.1",
