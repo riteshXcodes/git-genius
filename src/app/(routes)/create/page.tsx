@@ -6,6 +6,7 @@ import { api } from "@/trpc/react";
 import { toast } from "sonner";
 import useRefetch from "@/hooks/use-refetch";
 import { Info } from "lucide-react";
+import { redirect } from "next/navigation";
 
 type FormInput = {
     repoUrl: string;
@@ -106,8 +107,8 @@ const CreatePage = () => {
                     {!!checkCredits.data && (
                         <div
                             className={`mt-4 px-4 py-2 rounded-md border text-sm ${hasEnoughCredits
-                                    ? "bg-green-50 border-green-200 text-green-700"
-                                    : "bg-red-50 border-red-200 text-red-700"
+                                ? "bg-green-50 border-green-200 text-green-700"
+                                : "bg-red-50 border-red-200 text-red-700"
                                 }`}
                         >
                             <div className="flex items-start md:items-center gap-2">
@@ -120,8 +121,8 @@ const CreatePage = () => {
                                     </p>
                                     <p
                                         className={`mt-1 ${hasEnoughCredits
-                                                ? "text-green-600"
-                                                : "text-red-600"
+                                            ? "text-green-600"
+                                            : "text-red-600"
                                             }`}
                                     >
                                         You have{" "}
@@ -155,6 +156,10 @@ const CreatePage = () => {
                                     : isCreatingProject
                                         ? "Create Project"
                                         : "Check Credits"}
+                        </Button>
+
+                        <Button onClick={() => redirect('/makeApp')}>
+                            Create Your App
                         </Button>
 
                         {isCreatingProject && (
