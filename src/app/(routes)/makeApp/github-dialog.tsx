@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { createGitHubRepo } from './action';
 import { api } from '@/trpc/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface FileData {
     path: string;
