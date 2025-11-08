@@ -82,7 +82,6 @@
     "firebase": "^12.4.0",
     "fs": "^0.0.1-security",
     "gitgen": ".",
-    "gitgenius": ".",
     "ignore": "^7.0.5",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.553.0",

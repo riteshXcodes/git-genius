@@ -112,7 +112,7 @@ const CreatePage = () => {
                                 }`}
                         >
                             <div className="flex items-start md:items-center gap-2">
-                                <Info className="size-4 flex-shrink-0 mt-0.5 md:mt-0" />
+                                <Info className="size-4 shrink-0 mt-0.5 md:mt-0" />
                                 <div>
                                     <p>
                                         You will be charged{" "}

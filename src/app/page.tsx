@@ -33,7 +33,7 @@ export default function Home() {
   const { isSignedIn } = useUser();
   const { openSignIn } = useClerk();
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 relative">
+    <div className="min-h-screen bg-linear-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 relative">
       <Navbar />
       <div className="h-4"></div>
 
@@ -41,15 +41,15 @@ export default function Home() {
         <div
           className={cn(
             "absolute inset-0",
-            "[background-size:20px_20px]",
-            "[background-image:radial-gradient(#999_1px,transparent_1px)]",
+            "bg-size[20px_20px]",
+            "bg-[radial-gradient(#999_1px,transparent_1px)]",
             "dark:bg-[radial-gradient(#404040_1px,transparent_1px)]"
           )}
           style={{
             transform: `translateY(${scrollY * 0.5}px)`
           }}
         />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
 
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="text-center space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -59,7 +59,7 @@ export default function Home() {
             </Badge>
 
             <h1 className="text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-7xl lg:text-8xl">
-              Git<span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Genius</span>
+              Git<span className="bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Genius</span>
             </h1>
 
             <p className="mx-auto max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-400 sm:text-xl">
@@ -101,7 +101,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <Card className="group relative overflow-hidden border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardContent className="p-8 relative">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/20 mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Search className="w-7 h-7 text-blue-600 dark:text-blue-400" />
@@ -126,7 +126,7 @@ export default function Home() {
             </Card>
 
             <Card className="group relative overflow-hidden border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardContent className="p-8 relative">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-emerald-100 dark:bg-emerald-900/20 mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Save className="w-7 h-7 text-emerald-600 dark:text-emerald-400" />
@@ -150,7 +150,7 @@ export default function Home() {
             </Card>
 
             <Card className="group relative overflow-hidden border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardContent className="p-8 relative">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-orange-100 dark:bg-orange-900/20 mb-6 group-hover:scale-110 transition-transform duration-500">
                   <Video className="w-7 h-7 text-orange-600 dark:text-orange-400" />
@@ -174,7 +174,7 @@ export default function Home() {
             </Card>
 
             <Card className="group relative overflow-hidden border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-br from-violet-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardContent className="p-8 relative">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-violet-100 dark:bg-violet-900/20 mb-6 group-hover:scale-110 transition-transform duration-500">
                   <GitBranch className="w-7 h-7 text-violet-600 dark:text-violet-400" />
@@ -216,7 +216,7 @@ export default function Home() {
 
               <div className="space-y-4 pt-4">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center">
                     <span className="text-blue-600 dark:text-blue-400 font-bold">1</span>
                   </div>
                   <div>
@@ -226,7 +226,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/20 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/20 flex items-center justify-center">
                     <span className="text-emerald-600 dark:text-emerald-400 font-bold">2</span>
                   </div>
                   <div>
@@ -236,7 +236,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center">
                     <span className="text-orange-600 dark:text-orange-400 font-bold">3</span>
                   </div>
                   <div>
@@ -251,7 +251,7 @@ export default function Home() {
               <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-2xl">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
                       <Sparkles className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -269,7 +269,7 @@ export default function Home() {
 
                     <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
                       <div className="flex items-start gap-3">
-                        <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                        <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                         <div className="space-y-2">
                           <p className="text-sm text-slate-900 dark:text-slate-100 font-medium">Found 8 files related to authentication:</p>
                           <div className="space-y-1 text-xs">
@@ -293,8 +293,8 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl -z-10" />
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-linear-to-br from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl -z-10" />
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-linear-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl -z-10" />
             </div>
           </div>
         </div>
