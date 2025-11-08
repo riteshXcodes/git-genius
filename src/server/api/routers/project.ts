@@ -2,7 +2,7 @@ import z from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { pollsCommits } from "@/lib/github";
 import { checkCredits, indexGithubRepo } from "@/lib/github-loader";
-
+import { createGitHubRepo, generateApp } from "@/lib/anthropic";
 export const projectRouter = createTRPCRouter({
     createProject: protectedProcedure.input(
         z.object({
@@ -183,5 +183,14 @@ export const projectRouter = createTRPCRouter({
             where: { userId: ctx.user.userId! },
             orderBy: { createdAt: 'desc' },
         });
+    }),
+    makeProject: protectedProcedure.input(z.object({
+        userPrompt: z.string(),
+    })).mutation(async ({ ctx, input }) => {
+        try {
+            const appFiles = await generateApp(input.userPrompt);
+        } catch (error: any) {
+            console.error(error);
+        }
     }),
 })

@@ -23,6 +23,7 @@
   "dependencies": {
     "@ai-sdk/google": "^2.0.23",
     "@ai-sdk/rsc": "^1.0.79",
+    "@anthropic-ai/sdk": "^0.68.0",
     "@auth0/nextjs-auth0": "^4.12.0",
     "@clerk/nextjs": "^6.34.0",
     "@clerk/themes": "^2.4.30",
@@ -30,6 +31,8 @@
     "@hookform/resolvers": "^5.2.2",
     "@langchain/community": "^1.0.0",
     "@langchain/core": "^1.0.1",
+    "@octokit/rest": "^22.0.1",
+    "@openrouter/sdk": "^0.1.6",
     "@prisma/client": "^6.5.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
