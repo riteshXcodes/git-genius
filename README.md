@@ -13,8 +13,9 @@ Manually checking commits, exploring file changes, or figuring out what’s happ
 
 There’s no easy way to ask —  
 > “What did this commit change?”  
-> “Who worked most actively on this repo?”  
-> “Summarize this repository for me.”  
+> “Can you create me a SaaS application?”  
+> “What are the llm models used in this repo?.”
+> "What are the tickets discussed in the meetings?"
 
 ---
 
@@ -67,6 +68,6 @@ Works with public GitHub APIs — no extra configuration required.
 2️⃣ Git-Genius analyzes commits and contributors.  
 3️⃣ Ask:  
 ```bash
-"Summarize this repo in one paragraph"
-"Who made the most commits last week?"
+"Which files I need to change for api manipulations?"
+"What is the key changes he made in his commit??"
 "Explain the main features of this project"
