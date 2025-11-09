@@ -27,7 +27,8 @@ It gives you commit insights, summaries, and allows you to **chat with the repos
 - 🧠 **Analyzes commits** — generates human-readable summaries of each commit.  
 - 💬 **Chat with any repo** — ask questions like *“Explain this PR?”*, *“How does authentication work?”*, or *“Show files related to login flow.”*  
 - 📊 **Commit insights** — visualize who contributed, when, and what changed the most.  
-- 🪄 **AI-generated summaries** — get concise overviews of repos before cloning or contributing.  
+- 🪄 **AI-generated summaries** — get concise overviews of repos before cloning or contributing.
+- 🧠 **Web-App Creation** — builds Web-applications in Real-time and pushes it to github repository.   
 
 Perfect for developers, reviewers, and hackathon teams who want to **understand codebases faster.**
 
